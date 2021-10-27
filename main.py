@@ -1,16 +1,15 @@
-# This is a sample Python script.
+import subprocess
 
-# Press ⌃R to execute it or replace it with your code.
-# Press Double ⇧ to search everywhere for classes, files, tool windows, actions, and settings.
+#applescript = """display dialogue "Someone has left or joined the server." with title "Discord Event" with icon caution buttons {"OK"}"""
 
+member = "Invisible Monster"
+button = "OK"
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press ⌘F8 to toggle the breakpoint.
+applescript = """
+display dialog "{} has either been removed or has joined." ¬
+with title "Discord Alert" ¬
+with icon caution ¬
+buttons "{}"
+""".format(member, button)
 
-
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+subprocess.call("osascript -e '{}'".format(applescript), shell=True)
